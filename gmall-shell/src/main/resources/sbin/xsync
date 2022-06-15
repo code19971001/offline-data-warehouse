@@ -1,5 +1,5 @@
 #!/bin/bash
-## command: xsync.sh /opt/module/hadoop
+## command: xsync /opt/module/hadoop
 ## function: All files in the specified path are copied in a loop.
 
 # get args count, if count == 0, then exit.
