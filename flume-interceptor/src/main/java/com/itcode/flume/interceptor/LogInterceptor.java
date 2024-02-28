@@ -16,7 +16,7 @@ import java.util.List;
 public class LogInterceptor implements Interceptor {
     @Override
     public void initialize() {
-
+        //don`t need init
     }
 
     @Override

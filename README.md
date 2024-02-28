@@ -21,6 +21,22 @@
 7. 元数据管理：atlas,如果某一层出现问题，我们可以快速分析数据之间依赖关系。
 8. 数据质量监控：写脚本对关键数据进行监控，如果数据异常，那就发出预警。
 9. 权限管理：kerberos+ranger。
-## 模块划分
-* `gmall-shell`: 用于存储项目中涉及到的shell脚本，以及各层的SQL文件。
-* 
+## 集群规划
+
+| role             | bigdata01                                                               | bigdata02               | bigdata03                  |
+|------------------|-------------------------------------------------------------------------|-------------------------|----------------------------|
+| HDFS             | nameNode,dataNode                                                       | dataNode                | dataNode,secondaryNameNode |
+| YARN             | nodeManager                                                             | ResourceManager         | nodeManager                |
+| JobHistoryServer | jobHistoryServer                                                        |                         |                            |
+| zookeeper        | zookeeper                                                               | zookeeper               | zookeeper                  |
+| kafka            | kafka                                                                   | kafka                   | kafka                      |
+| flume            | flume(file to kafka)                                                    | flume(file to kafka)    | flume(kafka to hdfs)       |
+| mysql            | mysql                                                                   |                         |                            |
+| maxwell          | maxwell                                                                 |                         |                            |
+| hive             | hive                                                                    |                         |                            |
+| DataX            | DataX                                                                   |                         |                            |
+| Spark            | Spark                                                                   |                         |                            |
+| DolphinScheduler | ApiApplicationServer,AlertServer,MasterServer,WorkerServer,LoggerServer | WorkServer,LoggerServer | WorkServer,LoggerServer    |
+| SuperSet         | SuperSet                                                                |                         |                            |
+|                  |                                                                         |                         |                            |
+

@@ -1,0 +1,54 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "hdfsreader",
+          "parameter": {
+            "defaultFS": "hdfs://bigdata01:9000",
+            "path": "/origin_data/apps/gmall/offline/db/base_province/${dt}",
+            "column": [
+              "*"
+            ],
+            "fileType": "text",
+            "compress": "gzip",
+            "encoding": "UTF-8",
+            "nullFormat": "\\N",
+            "fieldDelimiter": "\t"
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "username": "root",
+            "password": "000000",
+            "connection": [
+              {
+                "table": [
+                  "test_base_province"
+                ],
+                "jdbcUrl": "jdbc:mysql://bigdata01:3306/gmall?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf-8"
+              }
+            ],
+            "column": [
+              "id",
+              "name",
+              "region_id",
+              "area_code",
+              "iso_code",
+              "iso_3166_2",
+              "create_time",
+              "operate_time"
+            ],
+            "writeMode": "replace"
+          }
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    }
+  }
+}

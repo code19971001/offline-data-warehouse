@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class TimeStampInterceptor implements Interceptor {
 
-    private ArrayList<Event> events = new ArrayList<>();
+    private final ArrayList<Event> events = new ArrayList<>();
 
     @Override
     public void initialize() {
@@ -24,7 +24,7 @@ public class TimeStampInterceptor implements Interceptor {
     }
 
     /**
-     * 拦截日志，取出日志时间并在头中添加timestamp
+     * set event ts
      */
     @Override
     public Event intercept(Event event) {
